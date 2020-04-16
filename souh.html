@@ -1,0 +1,45 @@
+<html>
+
+
+<head>
+
+</head>
+
+<body>
+
+<p class="account"> Welcome </p>
+<script>
+//variables
+var accs = ['test@gmail.com:sdgqsdg','test@gmail.com:sdgqsdg','test@gmail.com:sdgqsdg','test@gmail.com:sdgqsdg','test@gmail.com:sdgqsdg','test@gmail.com:sdgqsdg','test@gmail.com:sdgqsdg'];
+var nb_accs = accs.length;
+var source = document.referrer;
+var account = document.querySelector('.account');
+console.log(document.referrer);
+
+//main
+if(source.startsWith('https://www.verifyspot.net/') || source.startsWith('http://www.verifyspot.net/')){
+
+  //giving account guarented
+  account.innerHTML = accs[Math.floor(Math.random() * nb_accs)];
+}
+
+else{
+  var x = true;
+  var already_token = JSON.parse(localStorage.getItem('already_token'));
+  if(!already_token){
+
+    //create new local storage varible
+    localStorage.setItem('already_token',JSON.stringify(x));
+    account.innerHTML = accs[Math.floor(Math.random() * nb_accs)];
+  }
+  else if(already_token == true){
+
+    //user already toke account
+    account.innerHTML = "Sorry! we can't give more than one account!";
+  }
+}
+
+</script>
+</body>
+
+</html>
